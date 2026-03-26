@@ -1,38 +1,74 @@
+// import { createSlice } from '@reduxjs/toolkit';
+
+// const initialState = {
+//   address: null,
+//   balance: '0',
+//   tokens: [],
+//   transactions: [],
+//   isLoading: false,
+// };
+
+// const walletSlice = createSlice({
+//      name: 'wallet',
+//      initialState,
+//      reducers: {
+//         setAddress: (state,payload) => {
+//             state.address = action.payload
+//         },
+//         setBalance: (state,payload) =>{
+//             state.balance = action.payload;
+//         },
+//         setTokens: (state, action) => { state.tokens = action.payload; },
+//         addTransaction: (state, action) => { state.transactions.unshift(action.payload); },
+//         updateTransactionStatus: (state, action) => {
+//       const tx = state.transactions.find(t => t.hash === action.payload.hash);
+//       if (tx) tx.status = action.payload.status;
+//     },
+//     setLoading: (state, action) => { state.isLoading = action.payload; },
+//     clearWallet: () => initialState,
+//      } 
+// })
+
+// export const {
+//   setAddress, setBalance, setTokens,
+//   addTransaction, updateTransactionStatus,
+//   setLoading, clearWallet,
+// } = walletSlice.actions;
+
+// export default walletSlice.reducer;
+
+
 import { createSlice } from '@reduxjs/toolkit';
 
+
+
 const initialState = {
-  address: null,
-  balance: '0',
-  tokens: [],
-  transactions: [],
-  isLoading: false,
+  isWalletCreated: false,
+  isUnlocked: false,
+  hasBiometrics: false,
 };
 
-const walletSlice = createSlice({
-     name: 'wallet',
-     initialState,
-     reducers: {
-        setAddress: (state,payload) => {
-            state.address = action.payload
-        },
-        setBalance: (state,payload) =>{
-            state.balance = action.payload;
-        },
-        setTokens: (state, action) => { state.tokens = action.payload; },
-        addTransaction: (state, action) => { state.transactions.unshift(action.payload); },
-        updateTransactionStatus: (state, action) => {
-      const tx = state.transactions.find(t => t.hash === action.payload.hash);
-      if (tx) tx.status = action.payload.status;
-    },
-    setLoading: (state, action) => { state.isLoading = action.payload; },
-    clearWallet: () => initialState,
-     } 
-})
 
-export const {
-  setAddress, setBalance, setTokens,
-  addTransaction, updateTransactionStatus,
-  setLoading, clearWallet,
-} = walletSlice.actions;
+const authSlice = createSlice({
+  name: 'auth',
+  initialState,
+  reducers: {
+    setWalletCreated: (state, action) => 
+        { 
+            state.isWalletCreated = action.payload; 
+        },
+    setUnlocked: (state, action) => 
+        { 
+            state.isUnlocked = action.payload; 
+        },
+    setHasBiometrics: (state, action) => 
+        { 
+            state.hasBiometrics = action.payload; 
+        },
+  },
+});
 
-export default walletSlice.reducer;
+
+
+export const { setWalletCreated, setUnlocked, setHasBiometrics } = authSlice.actions;
+export default authSlice.reducer;
