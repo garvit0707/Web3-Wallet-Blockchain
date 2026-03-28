@@ -12,6 +12,7 @@ import { setBalance, setLoading } from '../../store/slices/walletSlice';
 import { setUnlocked, setWalletCreated } from '../../store/slices/authSlice';
 import { clearWallet } from '../../store/slices/walletSlice';
 import Clipboard from '@react-native-clipboard/clipboard';
+// import { add } from 'react-native/types_generated/Libraries/Animated/AnimatedExports';
 
 export default function DashboardScreen({ navigation }) {
   const dispatch = useDispatch();
@@ -20,6 +21,7 @@ export default function DashboardScreen({ navigation }) {
   const [copied, setCopied] = useState(false);
 
   const fetchBalance = useCallback(async () => {
+    console.log("the add we have iis --------------------------",address)
     if (!address) return;
     dispatch(setLoading(true));
     try {
@@ -139,7 +141,7 @@ export default function DashboardScreen({ navigation }) {
 
           <Text style={styles.balanceUsd}>Goerli Testnet — not real ETH</Text>
 
-          {/* Address row */}
+       
           <TouchableOpacity style={styles.addressRow} onPress={handleCopyAddress}>
             <Text style={styles.addressText}>{shortenAddress(address)}</Text>
             <Text style={styles.copyBtn}>{copied ? '✓ Copied' : '⎘ Copy'}</Text>
@@ -176,13 +178,11 @@ export default function DashboardScreen({ navigation }) {
           </TouchableOpacity>
         </View>
 
-        {/* ── Token List ── */}
         <View style={styles.section}>
           <View style={styles.sectionHeader}>
             <Text style={styles.sectionTitle}>Tokens</Text>
           </View>
 
-          {/* ETH row always shown */}
           <View style={styles.tokenItem}>
             <View style={styles.tokenIconWrap}>
               <Text style={styles.tokenIcon}>Ξ</Text>
@@ -193,7 +193,7 @@ export default function DashboardScreen({ navigation }) {
             </View>
             <Text style={styles.tokenBalance}>{balance} ETH</Text>
           </View>
-
+          {console.log("token we have is here",tokens)}
           {tokens.length === 0 && (
             <Text style={styles.emptyText}>No custom tokens added yet</Text>
           )}
@@ -214,7 +214,7 @@ export default function DashboardScreen({ navigation }) {
           ))}
         </View>
 
-        {/* ── Transaction History ── */}
+       
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Recent Transactions</Text>
 
@@ -273,7 +273,7 @@ const styles = StyleSheet.create({
   },
   lockIcon: { fontSize: 18 },
 
-  // Balance card
+
   balanceCard: {
     margin: 16,
     backgroundColor: colors.surface,
@@ -324,7 +324,6 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
 
-  // Action buttons
   actionRow: {
     flexDirection: 'row',
     justifyContent: 'center',
@@ -344,7 +343,6 @@ const styles = StyleSheet.create({
   actionIcon: { fontSize: 22, color: '#fff', fontWeight: '700' },
   actionLabel: { fontSize: 13, color: colors.textSecondary },
 
-  // Sections
   section: {
     marginHorizontal: 16,
     marginBottom: 24,
@@ -371,7 +369,6 @@ const styles = StyleSheet.create({
     borderBottomColor: colors.border,
   },
 
-  // Token items
   tokenItem: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -400,7 +397,7 @@ const styles = StyleSheet.create({
     padding: 20,
   },
 
-  // Transactions
+
   txItem: {
     flexDirection: 'row',
     alignItems: 'center',
