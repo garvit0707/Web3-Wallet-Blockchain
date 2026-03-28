@@ -12,10 +12,10 @@ const walletSlice = createSlice({
      name: 'wallet',
      initialState,
      reducers: {
-        setAddress: (state,payload) => {
+        setAddress: (state,action) => {
             state.address = action.payload
         },
-        setBalance: (state,payload) =>{
+        setBalance: (state,action) =>{
             state.balance = action.payload;
         },
         setTokens: (state, action) => { state.tokens = action.payload; },
