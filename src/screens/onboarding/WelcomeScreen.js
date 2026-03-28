@@ -6,6 +6,11 @@ import {
 import { colors } from '../../theme/colors';
 
 export default function WelcomeScreen({ navigation }) {
+
+  const handlePress=()=>{
+    navigation.navigate('CreateWallet')
+    console.log("navigation routes works here")
+  };
   return (
     <View style={styles.container}>
       <StatusBar barStyle="light-content" backgroundColor={colors.background} />
@@ -21,7 +26,7 @@ export default function WelcomeScreen({ navigation }) {
       <View style={styles.actions}>
         <TouchableOpacity
           style={styles.primaryBtn}
-          onPress={() => navigation.navigate('CreateWallet')}
+          onPress={handlePress}
           activeOpacity={0.85}>
           <Text style={styles.primaryBtnText}>Create a new wallet</Text>
         </TouchableOpacity>
