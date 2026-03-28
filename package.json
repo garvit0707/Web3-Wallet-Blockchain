@@ -24,8 +24,10 @@
     "react-native-gesture-handler": "^2.30.0",
     "react-native-get-random-values": "^2.0.0",
     "react-native-keychain": "^10.0.0",
+    "react-native-qrcode-svg": "^6.3.21",
     "react-native-safe-area-context": "^5.7.0",
     "react-native-screens": "^4.24.0",
+    "react-native-svg": "^15.15.4",
     "react-redux": "^9.2.0"
   },
   "devDependencies": {
